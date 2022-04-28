@@ -1,6 +1,6 @@
 import React from 'react';
 
- 
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -8,10 +8,13 @@ class Search extends React.Component {
     this.state = {
       value: ''
     };
+    this.debounceTimer = null;
   }
 
   handleInputChange(e) {
-    this.props.getYouTubeVideos(e.target.value);
+
+    clearTimeout(this.debounceTimer);
+    this.debounceTimer = setTimeout(this.props.handleSearch(e.target.value), 500);
     this.setState({
       value: e.target.value
     });

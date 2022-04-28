@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import VideoListEntry from './VideoListEntry.js';
 
-var VideoList = ({videos, handleVideoListEntryTitleClick}) => (
+var VideoList = (props) => (
   <div className="video-list">
-    {
-      videos.map(video => (
+    {console.log(props)}
+    {props.videos ?
+      props.videos.map(video => (
         <VideoListEntry
           key={video.etag}
           video={video}
-          handleVideoListEntryTitleClick={handleVideoListEntryTitleClick}
+          handleVideoListEntryTitleClick={props.handleClick}
         />
-      ))
-    }
+      )) : 'Fail'}
   </div>
 );
 
