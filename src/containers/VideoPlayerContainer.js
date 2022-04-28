@@ -7,7 +7,8 @@ import VideoPlayer from '../components/VideoPlayer.js';
 //dispatchers with your VideoPlayer component props.
 
 var mapStateToProps = (state) => ({
-  video: state.currentVideo
+  video: state.currentVideo,
+  toggle: state.autoplay
 });
 
 var VideoPlayerContainer = connect(mapStateToProps)(VideoPlayer);

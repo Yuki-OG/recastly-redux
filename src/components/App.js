@@ -2,25 +2,30 @@ import React from 'react';
 import VideoListContainer from '../containers/VideoListContainer.js';
 import VideoPlayerContainer from '../containers/VideoPlayerContainer.js';
 import SearchContainer from '../containers/SearchContainer.js';
+import store from '../store/store.js';
+import toggleAutoPlay from '../actions/toggleAutoPlay.js';
+
+var handleClick = () => {
+  store.dispatch(toggleAutoPlay());
+};
 
 var App = () => (
   <div>
     <nav className="navbar">
       <div className="col-md-6 col-md-offset-3">
-        {/* <Search getYouTubeVideos={this.getYouTubeVideos}/> */}
         <SearchContainer />
       </div>
     </nav>
     <div className="row">
       <div className="col-md-7">
-        {/* <VideoPlayer video={this.state.currentVideo}/> */}
         <VideoPlayerContainer />
       </div>
       <div className="col-md-5">
-        {/* <VideoList
-          handleVideoListEntryTitleClick={this.handleVideoListEntryTitleClick.bind(this)}
-          videos={this.state.videos}
-        /> */}
+        <span style={{paddingRight: '0.5rem' }} >AutoPlay</span>
+        <label className="switch">
+          <input type="checkbox" onClick={handleClick} ></input>
+          <span className="slider"></span>
+        </label>
         <VideoListContainer />
       </div>
     </div>

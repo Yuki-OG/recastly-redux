@@ -14,7 +14,7 @@ class Search extends React.Component {
   handleInputChange(e) {
 
     clearTimeout(this.debounceTimer);
-    this.debounceTimer = setTimeout(this.props.handleSearch(e.target.value), 500);
+    this.debounceTimer = setTimeout(this.props.handleSearchInputChange.bind(this, e.target.value), 500);
     this.setState({
       value: e.target.value
     });

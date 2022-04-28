@@ -4,18 +4,19 @@ import changeVideo from './currentVideo.js';
 import YOUTUBE_API_KEY from '../config/youtube.js';
 import store from '../store/store.js';
 
+var handleVideoSearch = function(query = 'cool cats') {
 
-var handleVideoSearch = (q) => {
-  //TODO:  Write an asynchronous action to handle a video search!
-  const apiThing = {
-    key: YOUTUBE_API_KEY,
-    query: q
+  return (dispatch) => {
+    const options = {
+      key: YOUTUBE_API_KEY,
+      query: query
+    };
+    searchYouTube(options, (data) => {
+      dispatch(changeVideoList(data));
+      dispatch(changeVideo(data[0]));
+    });
   };
-  searchYouTube(apiThing, (data) => {
-    console.log(data);
-    store.dispatch(changeVideoList(data));
-    store.dispatch(changeVideo(data[0]));
-  });
 };
+
 
 export default handleVideoSearch;

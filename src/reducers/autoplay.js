@@ -1,13 +1,13 @@
 import Redux from 'redux';
 
-var currentVideoReducer = (state = null, action) => {
+var autoPlayReducer = (state = false, action) => {
   //TODO: define a reducer for the currentVideo field of our state.
   switch (action.type) {
-    case 'CHANGE_VIDEO':
-      return action.video || null;
+    case 'TOGGLE_AUTOPLAY':
+      return !state;
     default:
       return state;
   }
 };
 
-export default currentVideoReducer;
+export default autoPlayReducer;
